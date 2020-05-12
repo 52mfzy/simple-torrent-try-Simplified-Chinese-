@@ -228,7 +228,7 @@ func (s *Server) Run(version string) error {
 			pass = s[1]
 		}
 		h = cookieauth.New().SetUserPass(user, pass).Wrap(h)
-		log.Printf("Enabled HTTP authentication")
+		log.Printf("是否开启用户名密码登录")
 	}
 	if s.Log {
 		h = requestlog.Wrap(h)
@@ -246,7 +246,7 @@ func (s *Server) Run(version string) error {
 	if !strings.HasPrefix(s.mainAddr, ":") {
 		listenLog = s.mainAddr
 	}
-	log.Printf("Listening at %s://%s", proto, listenLog)
+	log.Printf("网址 %s://%s", proto, listenLog)
 	if isTLS {
 		return server.ListenAndServeTLS(s.CertPath, s.KeyPath)
 	}
